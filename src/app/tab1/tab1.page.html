@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Asistencia
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="Avatar de usuario">
+      </ion-avatar>
+      <ion-label>
+        Jeronimo Ezequiel huincaman
+      </ion-label>
+      <ion-checkbox slot="end"></ion-checkbox>
+    </ion-item>
+    <ion-item *ngFor="let estudiante of estudiantes" [ngStyle]="{'--background' : estudiante.presente ? ' #abebc6' : ' #f5b7b1'}">
+      <ion-avatar slot="start">
+        <img [src]="estudiante.avatar" alt="Avatar de usuario">
+      </ion-avatar>
+      <ion-label [ngStyle]="{'color': estudiante.presente ? 'black' : 'white'}">
+        {{estudiante.nombre}}
+      </ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="estudiante.presente"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>
