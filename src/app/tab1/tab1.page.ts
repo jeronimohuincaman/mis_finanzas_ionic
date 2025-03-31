@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TitleService } from '../services/titleService/title.service';
 
 
@@ -14,7 +14,7 @@ export interface Estudiante {
   styleUrls: ['tab1.page.scss'],
   standalone: false,
 })
-export class Tab1Page implements OnInit {
+export class Tab1Page {
 
   estudiantes: Estudiante[] = [
     {
@@ -38,7 +38,8 @@ export class Tab1Page implements OnInit {
     private _titleService: TitleService
   ) { }
 
-  ngOnInit() {
-    this._titleService.setTitle('Asistencia'); // Establece el título inicial
+  ionViewWillEnter() {
+    // Actualiza el título del tab cada vez que se muestra
+    this._titleService.setTitle('Asistencia');
   }
 }
