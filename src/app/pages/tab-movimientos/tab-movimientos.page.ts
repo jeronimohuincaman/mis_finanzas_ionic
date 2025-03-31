@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonModal } from '@ionic/angular';
+import { TitleService } from '../../services/titleService/title.service';
 
 export interface Movimiento {
   fecha: string;
@@ -10,12 +11,12 @@ export interface Movimiento {
 }
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss'],
+  selector: 'app-tab-movimientos',
+  templateUrl: 'tab-movimientos.page.html',
+  styleUrls: ['tab-movimientos.page.scss'],
   standalone: false,
 })
-export class Tab2Page {
+export class TabMovimientosPage {
   @ViewChild(IonModal) modal!: IonModal;
 
   movimientos: Movimiento[] = [];
@@ -24,13 +25,19 @@ export class Tab2Page {
 
   constructor(
     private fb: FormBuilder,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private _titleService: TitleService
   ) {
     this.form = this.fb.group({
       fecha: ['', [Validators.required]],
       concepto: ['', [Validators.required, Validators.minLength(1)]],
       cantidad: ['', [Validators.required, Validators.minLength(1)]]
     });
+  }
+
+  ionViewWillEnter() {
+    // Actualiza el título del tab cada vez que se muestra
+    this._titleService.setTitle('Movimientos');
   }
 
 
