@@ -9,7 +9,6 @@
     </ion-item>
   </ion-list>
 
-  <ion-button id="open-modal" expand="block">Nuevo</ion-button>
   <ion-modal trigger="open-modal">
     <ng-template>
       <ion-toolbar>
@@ -27,7 +26,7 @@
       <ion-content class="ion-padding">
         <form [formGroup]="form" (ngSubmit)="confirm()">
           <ion-item>
-            <ion-datetime id="datetime" formControlName="fecha"  displayFormat="DD.MM.YYYY"></ion-datetime>
+            <ion-datetime id="datetime" formControlName="fecha" displayFormat="DD.MM.YYYY"></ion-datetime>
           </ion-item>
           <ion-item>
             <ion-input formControlName="concepto" label="Ingrese el concepto" labelPlacement="stacked" type="text"
@@ -37,9 +36,12 @@
             <ion-input formControlName="cantidad" label="Ingrese las cantidad" labelPlacement="stacked" type="text"
               placeholder="$$"></ion-input>
           </ion-item>
-
         </form>
       </ion-content>
     </ng-template>
   </ion-modal>
 </ion-content>
+
+<ion-footer>
+  <ion-button id="open-modal" expand="block">Nuevo</ion-button>
+</ion-footer>
