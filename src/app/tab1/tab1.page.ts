@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TitleService } from '../services/titleService/title.service';
 
 
 export interface Estudiante {
@@ -13,7 +14,7 @@ export interface Estudiante {
   styleUrls: ['tab1.page.scss'],
   standalone: false,
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
 
   estudiantes: Estudiante[] = [
     {
@@ -33,6 +34,11 @@ export class Tab1Page {
     }
   ];
 
-  constructor() { }
+  constructor(
+    private _titleService: TitleService
+  ) { }
 
+  ngOnInit() {
+    this._titleService.setTitle('Asistencia'); // Establece el título inicial
+  }
 }
