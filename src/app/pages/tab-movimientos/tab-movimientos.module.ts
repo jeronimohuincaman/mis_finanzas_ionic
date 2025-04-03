@@ -6,6 +6,7 @@ import { TabMovimientosPage } from './tab-movimientos.page';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { TabMovimientosPageRoutingModule } from './tab-movimientos-routing.module';
+import { FormModalComponent } from './components/form-modal/form-modal.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { TabMovimientosPageRoutingModule } from './tab-movimientos-routing.modul
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [TabMovimientosPage],
+  declarations: [TabMovimientosPage, FormModalComponent],
   providers: [DatePipe]
 })
 export class Tab2PageModule { }
