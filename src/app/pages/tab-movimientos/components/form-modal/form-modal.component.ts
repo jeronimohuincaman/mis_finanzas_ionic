@@ -14,6 +14,12 @@ export class FormModalComponent implements OnInit {
   form: FormGroup;
   selectedDate: string = ''; // Fecha seleccionada
 
+  conceptos = [
+    { id: 1, descripcion: 'Mercado' },
+    { id: 2, descripcion: 'Transporte' },
+    { id: 3, descripcion: 'Retiro de efectivo' }
+  ]
+
   constructor(
     private fb: FormBuilder,
     private datePipe: DatePipe,
@@ -31,33 +37,21 @@ export class FormModalComponent implements OnInit {
 
   save() {
     if (this.form.valid) {
-      console.log('Form Data:', this.form.value);
       const movimiento = {
         fecha: this.datePipe.transform(this.form.value.fecha, 'yyyy-MM-dd') || '',
-        concepto: this.form.value.concepto,
+        concepto: this.form.value.concepto.id,
         cantidad: this.form.value.cantidad
       }
-      this.addMovimiento(movimiento);
       this.form.reset();
-      this.close();
+      this.close(movimiento);
     } else {
       console.log('Form is invalid');
     }
   }
 
-  close() {
-    this.modalCtrl.dismiss(null, 'cancel');
+  close(movimiento: Movimiento | null) {
+    console.log(movimiento)
+    this.modalCtrl.dismiss(movimiento, 'cancel');
   }
-
-
-  addMovimiento(item: Movimiento) {
-    
-  }
-
-  deleteMovimiento(index: number) {
-    
-  }
-
-
 
 }

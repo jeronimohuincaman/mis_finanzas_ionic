@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Nuevo Movimiento</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="close()">Cerrar</ion-button>
+      <ion-button (click)="close(null)">Cerrar</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -15,8 +15,11 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Concepto</ion-label>
-      <ion-input formControlName="concepto"></ion-input>
+      <ion-select label="Concepto" placeholder="Mercado, Transporte..." formControlName="concepto">
+        <ion-select-option *ngFor="let concepto of conceptos" [value]="concepto">
+          {{ concepto.descripcion }}
+        </ion-select-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>

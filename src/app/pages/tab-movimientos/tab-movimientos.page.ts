@@ -38,6 +38,12 @@ export class TabMovimientosPage {
       component: FormModalComponent
     });
 
-    return await modal.present();
+    await modal.present();
+
+    const { data } = await modal.onWillDismiss();
+    if (data) {
+      console.log(data);
+      this.movimientos = [data, ...this.movimientos];
+    }
   }
 }
