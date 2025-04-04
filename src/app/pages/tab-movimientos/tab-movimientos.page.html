@@ -1,13 +1,33 @@
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-list>
-    <ion-item *ngFor="let movimiento of movimientos">
-      <ion-label>
-        <h2>{{movimiento.fecha}}</h2>
-        <h3>{{movimiento.concepto}}</h3>
-        <p>${{movimiento.cantidad}}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-grid *ngIf="movimientos.length > 0">
+    <!-- Encabezados -->
+    <!-- <ion-row class="header-row">
+      <ion-col *ngFor="let head of headers" class="ion-text-center">
+        <strong>{{ head }}</strong>
+      </ion-col>
+      <ion-col size="auto"></ion-col>
+    </ion-row> -->
+
+        <!-- Encabezados -->
+        <ion-row class="header-row">
+          <ion-col size="3" class="ion-text-center"><strong>Fecha</strong></ion-col>
+          <ion-col size="5" class="ion-text-center"><strong>Concepto</strong></ion-col>
+          <ion-col size="3" class="ion-text-center"><strong>Cantidad</strong></ion-col>
+          <ion-col size="1" class="ion-text-center"><strong>Acción</strong></ion-col>
+        </ion-row>
+
+    <!-- Filas de movimientos -->
+    <ion-row *ngFor="let movimiento of movimientos" class="data-row">
+      <ion-col size="3" class="ion-text-center">{{ movimiento.fecha }}</ion-col>
+      <ion-col size="5" class="ion-text-center">{{ movimiento.concepto.descripcion }}</ion-col>
+      <ion-col size="3" class="ion-text-center">${{ movimiento.cantidad }}</ion-col>
+      <ion-col size="1" class="ion-text-center">
+        <ion-button color="danger" fill="clear">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
 <ion-footer>

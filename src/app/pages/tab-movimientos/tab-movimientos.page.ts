@@ -7,7 +7,7 @@ import { FormModalComponent } from './components/form-modal/form-modal.component
 
 export interface Movimiento {
   fecha: string;
-  concepto: string;
+  concepto: { id: number, descripcion: string };
   cantidad: number;
 }
 
@@ -21,6 +21,7 @@ export class TabMovimientosPage {
   @ViewChild(IonModal) modal!: IonModal;
 
   movimientos: Movimiento[] = [];
+  headers = ['Fecha', 'Concepto', 'Monto', 'Acciones'];
 
   constructor(
     private _titleService: TitleService,

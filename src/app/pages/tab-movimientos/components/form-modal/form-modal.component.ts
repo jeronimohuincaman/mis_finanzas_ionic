@@ -39,7 +39,7 @@ export class FormModalComponent implements OnInit {
     if (this.form.valid) {
       const movimiento = {
         fecha: this.datePipe.transform(this.form.value.fecha, 'yyyy-MM-dd') || '',
-        concepto: this.form.value.concepto.id,
+        concepto: this.form.value.concepto,
         cantidad: this.form.value.cantidad
       }
       this.form.reset();

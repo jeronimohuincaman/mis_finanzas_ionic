@@ -1,0 +1,28 @@
+.header-row {
+    background: var(--ion-color-light);
+    font-weight: bold;
+    border-bottom: 2px solid var(--ion-color-medium);
+}
+
+.data-row {
+    border-bottom: 1px solid var(--ion-color-light);
+}
+
+ion-col {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    /* Centrar Verticalmente */
+    justify-content: center;
+    /* Centrar Horizontalmente */
+    text-align: center;
+}
+
+.header-row,
+.data-row {
+    display: flex;
+    align-items: center;
+    /* Centrar Verticalmente */
+    text-align: center;
+    /* Asegura que el texto esté centrado */
+}
